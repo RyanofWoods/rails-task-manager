@@ -1,6 +1,14 @@
-<h1><%= @task.title %></h1>
-<%= link_to "Edit task", edit_task_path(@task) %>
-<p><%= @task.details %></p>
-<div><%= @task.completed %></div>
+<h1>Task: <%= @task.title %></h1>
 
-<%= link_to "Back to list", tasks_path %>
+<div>
+  <i class='<%= @task.completed ? "bi bi-check2-square" : "bi bi-app" %>'></i>
+  <p class="d-inline-block"><%= @task.details %></p>
+</div>
+
+<%= link_to(edit_task_path(@task)) do %>
+  <div class="btn btn-warning">Edit task</div> 
+<% end %>
+
+<%= link_to(tasks_path ) do %>
+  <div class="btn btn-primary">Back to list</div> 
+<% end %>
