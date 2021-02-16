@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :find_task, only: [:show, :edit]
+  before_action :find_task, only: [:show, :edit, :update]
 
   def index
     @tasks = Task.all
@@ -20,6 +20,11 @@ class TasksController < ApplicationController
   def edit
   end
 
+  def update
+    @task.update(strong_params)
+    redirect_to task_path(@task)
+  end
+
   private
 
   def find_task
@@ -27,6 +32,6 @@ class TasksController < ApplicationController
   end
 
   def strong_params
-    params.require(:task).permit(:title, :details)
+    params.require(:task).permit(:title, :details, :completed)
   end
 end
