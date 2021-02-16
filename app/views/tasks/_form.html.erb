@@ -3,6 +3,7 @@
   <%= f.text_field :title %>
   <%= f.label :details %>
   <%= f.text_field :details %>
-  <%= f.label :title %>
+  <%= f.label :completed, hidden: @task.new_record? %>
+  <%= f.check_box :completed, hidden: @task.new_record? %>
   <%= f.submit %>
 <% end %>
